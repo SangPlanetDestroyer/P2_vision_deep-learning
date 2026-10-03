@@ -51,5 +51,4 @@ Jumlah kelas pada folder citra yang digunakan notebook adalah Durian 3.327 dan P
 ## Dokumen
 
 - [`DESAIN_AWAL.md`](DESAIN_AWAL.md) — desain awal proyek.
-- [`DESAIN_LENGKAP.md`](DESAIN_LENGKAP.md) — rancangan dan penjelasan lengkap.
 - [`datasets/README.md`](datasets/README.md) — sumber dan cara menyiapkan dataset.

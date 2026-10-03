@@ -2,3 +2,4 @@ datasets/*
 !datasets/README.md
 *.rar
 *.zip
+notebook.ipynb

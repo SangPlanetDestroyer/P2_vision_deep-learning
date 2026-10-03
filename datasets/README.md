@@ -17,6 +17,12 @@ dan dikelompokkan ke dalam dua kelas:
 
 Metadata deskriptif dataset tersedia sebagai `Dataset-metadata.xlsx`.
 
+Jumlah citra pada folder lokal yang digunakan notebook adalah 3.327 Durian dan
+2.872 Papaya. Teks abstrak di file metadata mencantumkan angka tersebut dalam
+urutan terbalik. Karena itu, folder citra dan label yang dibaca notebook menjadi
+acuan eksperimen saat ini; perbedaan ini sebaiknya diverifikasi terhadap sumber
+dataset sebelum pelaporan final.
+
 ## Mengapa dataset tidak disimpan di GitHub?
 
 File citra berukuran besar sehingga tidak praktis dan tidak sesuai untuk
@@ -40,6 +46,10 @@ datasets/
     ├── 0.jpg
     └── ...
 ```
+
+Dataset lokal juga dapat memiliki folder citra UAV sumber seperti `25 meter/`
+dan `30 meter/`. Folder tersebut tidak dibaca sebagai kelas oleh notebook
+klasifikasi saat ini.
 
 Notebook utama akan menggunakan `datasets/` secara otomatis ketika dijalankan
 di luar environment Kaggle. Pada Kaggle, lokasi dataset diatur melalui

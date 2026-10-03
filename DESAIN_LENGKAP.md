@@ -64,7 +64,7 @@ InterDuPa-UAV:
 
 https://zenodo.org/records/15664908
 
-> Dataset mentah tidak disimpan di repository GitHub karena ukuran dataset relatif besar. Repository berisi source code, notebook, konfigurasi eksperimen, metadata yang diperlukan, dan hasil eksperimen.
+> Dataset mentah dan file metadata lokal tidak disimpan di repository GitHub karena ukuran file dan keterbatasan struktur metadata. Repository berisi source code, notebook, konfigurasi eksperimen, hasil eksperimen, serta dokumentasi cara memperoleh dataset.
 
 ---
 
@@ -453,31 +453,35 @@ Notebook utama dirancang dengan tahapan:
         ↓
 03. Metadata Inspection
         ↓
-04. Data Leakage Analysis
+04. Blind Test Holdout (20 citra per kelas)
         ↓
-05. Train / Validation Split
+05. Data Leakage Analysis
         ↓
-06. Dataset Visualization
+06. Train / Validation Split
         ↓
-07. Data Augmentation & Preprocessing
+07. Dataset Visualization
         ↓
-08. ResNet18 Preparation
+08. Data Augmentation & Preprocessing
         ↓
-09. Feature Extraction
+09. ResNet18 Preparation
         ↓
-10. Partial Fine-Tuning
+10. Feature Extraction
         ↓
-11. Training from Scratch
+11. Partial Fine-Tuning
         ↓
-12. Model Comparison
+12. Training from Scratch
         ↓
-13. Accuracy Curves
+13. Model Comparison
         ↓
-14. Confusion Matrix
+14. Accuracy Curves
         ↓
-15. Inference Latency
+15. Confusion Matrix
         ↓
-16. Final Analysis
+16. Inference Latency
+        ↓
+17. Blind Test Prediction
+        ↓
+18. Final Analysis
 ```
 
 ---
@@ -505,7 +509,7 @@ Output akhir project diharapkan berupa:
 
 1. Dataset InterDuPa-UAV yang terstruktur.
 2. Metadata dataset yang telah dianalisis.
-3. Strategi train-validation split yang menghindari data leakage.
+3. Strategi train-validation split yang reproducible dengan keterbatasan data leakage yang didokumentasikan.
 4. Implementasi ResNet18 Feature Extraction.
 5. Implementasi ResNet18 Partial Fine-Tuning.
 6. Implementasi ResNet18 Training from Scratch.
@@ -515,8 +519,9 @@ Output akhir project diharapkan berupa:
 10. Pengukuran training time.
 11. Pengukuran inference latency.
 12. Analisis hasil eksperimen.
-13. Notebook yang dapat direproduksi pada Kaggle.
-14. Dokumentasi project pada GitHub.
+13. Blind test anonim sebanyak 20 citra per kelas.
+14. Notebook yang dapat direproduksi pada Kaggle.
+15. Dokumentasi project pada GitHub.
 
 ---
 
@@ -531,7 +536,7 @@ Status implementasi saat ini:
 [x] Analisis Dataset-metadata.xlsx
 [x] Analisis potensi data leakage
 [x] Implementasi train-validation split yang reproducible
-[ ] Menentukan split final bebas leakage berbasis source group
+[ ] Menentukan split final bebas leakage berbasis source group (group mapping belum tersedia)
 [x] Implementasi preprocessing dan augmentasi
 [x] Implementasi Feature Extraction
 [x] Implementasi Partial Fine-Tuning
@@ -540,14 +545,14 @@ Status implementasi saat ini:
 [x] Perbandingan hasil
 [x] Evaluasi latency
 [x] Dokumentasi hasil eksperimen di notebook dan artifact Kaggle
-[ ] Finalisasi README
+[x] README ringkas dan dokumentasi dataset
 ```
 
 `Dataset-metadata.xlsx` telah diperiksa dan bersifat deskriptif; file tersebut tidak menyediakan pemetaan per-crop ke citra UAV sumber. Notebook menyediakan split stratified yang reproducible sebagai fallback, serta `GROUP_MAPPING_PATH` untuk menjalankan group split tanpa overlap ketika pemetaan `relative_path,group_id` sudah tersedia. Karena itu, hasil split fallback belum boleh diklaim bebas data leakage pada laporan akhir.
 
-Tiga eksperimen telah selesai dijalankan pada Kaggle GPU. Partial Fine-Tuning menjadi model terbaik dengan validation accuracy dan weighted F1 sebesar `1.0000`, sedangkan latency inference-nya `3.07 ms/image`. Artifact sementara tersimpan pada `/kaggle/working/results`.
+Tiga eksperimen telah selesai dijalankan pada Kaggle GPU. Partial Fine-Tuning dan Scratch mencapai validation accuracy `1.0000`; Partial Fine-Tuning mencapai hasil tersebut pada epoch 1 dan dipilih sebagai model utama. Blind test anonim berisi 20 citra per kelas menghasilkan akurasi internal `1.0000`. Latency Partial Fine-Tuning tercatat `3.157 ms/image`. Artifact eksperimen disimpan di `results/` pada repository setelah proses training.
 
-Tahap berikutnya adalah melengkapi group mapping bila hubungan crop dengan citra UAV sumber dapat diperoleh, memastikan label dan jumlah data konsisten dengan metadata, lalu memfinalkan README untuk pelaporan hasil.
+Tahap berikutnya yang bersifat opsional adalah memperoleh group mapping dari sumber dataset dan memverifikasi perbedaan jumlah kelas antara folder citra dan teks metadata. Hasil saat ini tetap harus dilaporkan sebagai image-level split, bukan sebagai evaluasi yang bebas data leakage.
 
 ## 18. Kode Acuan dan Referensi Implementasi
 

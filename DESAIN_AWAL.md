@@ -41,6 +41,8 @@ Citra UAV
    ↓
 Pemeriksaan dataset dan label
    ↓
+Holdout blind test: 20 citra per kelas
+   ↓
 Pembagian train-validation 80:20
    ↓
 Preprocessing dan augmentasi citra
@@ -62,7 +64,7 @@ Preprocessing menggunakan ukuran input 224 × 224 piksel, konversi RGB, normalis
 | Partial Fine-Tuning | ResNet18 pretrained; layer akhir dan classifier dilatih, layer awal dibekukan. |
 | Training from Scratch | ResNet18 tanpa bobot pretrained; seluruh parameter dilatih dari inisialisasi acak. |
 
-Ketiga mode menggunakan split dataset, preprocessing, jumlah epoch, dan batch size yang sama agar hasil dapat dibandingkan secara adil.
+Ketiga mode menggunakan split dataset yang sama setelah blind holdout, preprocessing, jumlah epoch, dan batch size yang sama agar hasil dapat dibandingkan secara adil. Blind test disimpan dengan nama anonim dan label tidak diberikan kepada model.
 
 ## 7. Evaluasi
 
@@ -74,6 +76,7 @@ Evaluasi dilakukan menggunakan:
 - confusion matrix;
 - waktu training setiap mode; dan
 - inference latency model terbaik dalam milidetik per citra.
+- akurasi internal blind test yang terdiri dari 40 citra anonim.
 
 Hasil disimpan di direktori `results/` dalam bentuk tabel CSV, grafik akurasi, confusion matrix, dan konfigurasi eksperimen.
 
@@ -82,6 +85,7 @@ Hasil disimpan di direktori `results/` dalam bentuk tabel CSV, grafik akurasi, c
 - Dataset mentah tidak disimpan di repository karena ukurannya besar.
 - Metadata yang tersedia bersifat deskriptif dan belum menyediakan pemetaan setiap crop ke citra UAV sumber.
 - Oleh karena itu, split stratified berbasis citra belum dapat menjamin bebas data leakage antar-citra sumber UAV.
+- Blind test tidak menggantikan evaluasi pada sumber UAV yang benar-benar baru karena pemetaan group sumber belum tersedia.
 - Hasil eksperimen bergantung pada perangkat dan environment saat training, terutama GPU yang digunakan.
 
 ## 9. Keluaran yang Direncanakan
@@ -91,4 +95,5 @@ Hasil disimpan di direktori `results/` dalam bentuk tabel CSV, grafik akurasi, c
 3. Grafik akurasi per epoch.
 4. Confusion matrix.
 5. Latensi inference model terpilih.
-6. README ringkas untuk menjelaskan hasil dan kesimpulan.
+6. Blind test anonim 20 citra per kelas.
+7. README ringkas untuk menjelaskan hasil dan kesimpulan.

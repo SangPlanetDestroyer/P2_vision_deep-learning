@@ -1,0 +1,13 @@
+{
+  "seed": 42,
+  "batch_size": 32,
+  "epochs": 10,
+  "validation_fraction": 0.2,
+  "dataset_root": "/kaggle/input/datasets/sangplanetdestroyer/dataset-p2-vision-dan-deep/datasets",
+  "group_mapping_path": "None",
+  "class_to_idx": {
+    "Durian": 0,
+    "Papaya": 1
+  },
+  "device": "cuda"
+}

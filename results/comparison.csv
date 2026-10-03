@@ -1,0 +1,4 @@
+name,strategy,best_val_accuracy,best_epoch,training_time_seconds,inference_latency_ms_per_image
+Partial Fine-Tuning,partial_fine_tuning,1.0,3,408.5073633369999,3.065862720000041
+Scratch,scratch,0.9959677419354839,10,434.25424895799983,
+Feature Extraction,feature_extraction,0.9919354838709677,2,422.031134023,

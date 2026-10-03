@@ -307,6 +307,9 @@ Model akan dievaluasi berdasarkan beberapa aspek.
 Minimal:
 
 ```text
+Train Accuracy
+Train Loss
+Validation Loss
 Validation Accuracy
 ```
 
@@ -533,16 +536,18 @@ Status implementasi saat ini:
 [x] Implementasi Feature Extraction
 [x] Implementasi Partial Fine-Tuning
 [x] Implementasi Training from Scratch
-[ ] Training pada Kaggle GPU
-[ ] Perbandingan hasil
-[ ] Evaluasi latency
-[ ] Dokumentasi hasil
+[x] Training pada Kaggle GPU
+[x] Perbandingan hasil
+[x] Evaluasi latency
+[x] Dokumentasi hasil eksperimen di notebook dan artifact Kaggle
 [ ] Finalisasi README
 ```
 
 `Dataset-metadata.xlsx` telah diperiksa dan bersifat deskriptif; file tersebut tidak menyediakan pemetaan per-crop ke citra UAV sumber. Notebook menyediakan split stratified yang reproducible sebagai fallback, serta `GROUP_MAPPING_PATH` untuk menjalankan group split tanpa overlap ketika pemetaan `relative_path,group_id` sudah tersedia. Karena itu, hasil split fallback belum boleh diklaim bebas data leakage pada laporan akhir.
 
-Tahap berikutnya adalah menjalankan tiga eksperimen di Kaggle GPU menggunakan split yang sama, lalu menyimpan comparison, confusion matrix, dan latency. Sebelum pelaporan final, lengkapi group mapping bila hubungan crop dengan citra UAV sumber dapat diperoleh.
+Tiga eksperimen telah selesai dijalankan pada Kaggle GPU. Partial Fine-Tuning menjadi model terbaik dengan validation accuracy dan weighted F1 sebesar `1.0000`, sedangkan latency inference-nya `3.07 ms/image`. Artifact sementara tersimpan pada `/kaggle/working/results`.
+
+Tahap berikutnya adalah melengkapi group mapping bila hubungan crop dengan citra UAV sumber dapat diperoleh, memastikan label dan jumlah data konsisten dengan metadata, lalu memfinalkan README untuk pelaporan hasil.
 
 ## 18. Kode Acuan dan Referensi Implementasi
 

@@ -82,7 +82,7 @@ Evaluasi dilakukan menggunakan:
 - inference latency model terbaik dalam milidetik per citra.
 - akurasi internal blind test yang terdiri dari 40 citra anonim.
 
-Hasil disimpan di direktori `results/` dalam bentuk tabel CSV, grafik akurasi, confusion matrix, dan konfigurasi eksperimen.
+Hasil disimpan di direktori `results/` dalam bentuk tabel CSV, grafik akurasi, confusion matrix, visualisasi blind test, dan konfigurasi eksperimen.
 
 ## 8. Batasan dan Risiko
 
@@ -100,4 +100,5 @@ Hasil disimpan di direktori `results/` dalam bentuk tabel CSV, grafik akurasi, c
 4. Confusion matrix.
 5. Latensi inference model terpilih.
 6. Blind test anonim 20 citra per kelas.
-7. README ringkas untuk menjelaskan hasil dan kesimpulan.
+7. Visualisasi citra blind test dan prediksi model.
+8. README ringkas untuk menjelaskan hasil dan kesimpulan.

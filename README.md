@@ -37,6 +37,7 @@ Hasil lengkap tersedia di:
 - [`results/comparison.csv`](results/comparison.csv) — tabel perbandingan dan latency.
 - [`results/accuracy_curve.png`](results/accuracy_curve.png) — grafik akurasi/loss per epoch.
 - [`results/confusion_matrix.png`](results/confusion_matrix.png) — confusion matrix model terpilih.
+- [`results/blind_test_images.png`](results/blind_test_images.png) — visualisasi 40 citra blind test anonim beserta prediksi model.
 - [`results/config.json`](results/config.json) — konfigurasi eksperimen.
 - [`results/best_resnet18.pt`](results/best_resnet18.pt) — bobot model Partial Fine-Tuning terpilih.
 - [`datasets/metadata.csv`](datasets/metadata.csv) — manifest path, label numerik, dan nama kelas.

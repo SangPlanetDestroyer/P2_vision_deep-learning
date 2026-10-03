@@ -519,19 +519,20 @@ Output akhir project diharapkan berupa:
 
 ## 17. Status Pengembangan
 
-Status awal:
+Status implementasi saat ini:
 
 ```text
 [x] Dataset diperoleh
 [x] Struktur project dibuat
 [x] Materi Transfer Learning dipelajari
-[ ] Analisis Dataset-metadata.xlsx
-[ ] Analisis potensi data leakage
-[ ] Menentukan train-validation split
-[ ] Implementasi preprocessing
-[ ] Implementasi Feature Extraction
-[ ] Implementasi Partial Fine-Tuning
-[ ] Implementasi Training from Scratch
+[x] Analisis Dataset-metadata.xlsx
+[x] Analisis potensi data leakage
+[x] Implementasi train-validation split yang reproducible
+[ ] Menentukan split final bebas leakage berbasis source group
+[x] Implementasi preprocessing dan augmentasi
+[x] Implementasi Feature Extraction
+[x] Implementasi Partial Fine-Tuning
+[x] Implementasi Training from Scratch
 [ ] Training pada Kaggle GPU
 [ ] Perbandingan hasil
 [ ] Evaluasi latency
@@ -539,7 +540,9 @@ Status awal:
 [ ] Finalisasi README
 ```
 
-Tahap berikutnya yang harus dilakukan adalah **memeriksa `Dataset-metadata.xlsx` sebelum membuat train-validation split**. Hal ini penting untuk menentukan apakah gambar-gambar individual dapat dikelompokkan berdasarkan sumber citra UAV, sesi akuisisi, lokasi, atau identifier lain sehingga validation set tidak terkontaminasi oleh gambar yang sangat mirip dengan data training.
+`Dataset-metadata.xlsx` telah diperiksa dan bersifat deskriptif; file tersebut tidak menyediakan pemetaan per-crop ke citra UAV sumber. Notebook menyediakan split stratified yang reproducible sebagai fallback, serta `GROUP_MAPPING_PATH` untuk menjalankan group split tanpa overlap ketika pemetaan `relative_path,group_id` sudah tersedia. Karena itu, hasil split fallback belum boleh diklaim bebas data leakage pada laporan akhir.
+
+Tahap berikutnya adalah menjalankan tiga eksperimen di Kaggle GPU menggunakan split yang sama, lalu menyimpan comparison, confusion matrix, dan latency. Sebelum pelaporan final, lengkapi group mapping bila hubungan crop dengan citra UAV sumber dapat diperoleh.
 
 ## 18. Kode Acuan dan Referensi Implementasi
 

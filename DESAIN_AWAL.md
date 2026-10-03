@@ -30,7 +30,11 @@ Dataset lokal memiliki dua kelas:
 | Durian (`Durio zibethinus`) | 3.327 |
 | Papaya (`Carica papaya`) | 2.872 |
 
-Dataset mentah tidak disimpan di GitHub karena ukuran file citra besar. Sumber dan instruksi penyiapannya dijelaskan di [`datasets/README.md`](datasets/README.md).
+Dataset mentah dan metadata sumber `Dataset-metadata.xlsx` tidak disimpan di
+GitHub karena ukuran file dan keterbatasan struktur metadata. Repository
+menyertakan [`datasets/metadata.csv`](datasets/metadata.csv) sebagai manifest
+path dan label seluruh citra. Sumber dan instruksi penyiapannya dijelaskan di
+[`datasets/README.md`](datasets/README.md).
 
 ## 5. Rancangan Sistem
 
@@ -90,7 +94,7 @@ Hasil disimpan di direktori `results/` dalam bentuk tabel CSV, grafik akurasi, c
 
 ## 9. Keluaran yang Direncanakan
 
-1. Notebook eksperimen yang dapat dijalankan ulang.
+1. Notebook eksperimen Kaggle yang dapat dijalankan ulang setelah dataset tersedia.
 2. Tabel perbandingan tiga mode pelatihan.
 3. Grafik akurasi per epoch.
 4. Confusion matrix.

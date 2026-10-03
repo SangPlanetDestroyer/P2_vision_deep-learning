@@ -1,5 +1,6 @@
 datasets/*
 !datasets/README.md
+!datasets/metadata.csv
 *.rar
 *.zip
 notebook.ipynb

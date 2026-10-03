@@ -50,13 +50,17 @@ datasets/
 ├── 25 meter/
 ├── 30 meter/
 ├── Dataset-metadata.xlsx
+├── metadata.csv
 ├── demo.py
 ├── Durian (durio zibethinus)/
 ├── Papaya (carica papaya)/
 └── rar/
 ```
 
-`Dataset-metadata.xlsx` digunakan sebagai sumber informasi metadata dataset dan akan diperiksa sebelum proses pembagian data dilakukan.
+`Dataset-metadata.xlsx` digunakan sebagai sumber informasi deskriptif dataset.
+`datasets/metadata.csv` adalah manifest repository yang berisi
+`relative_path`, `label`, dan `class_name` untuk setiap citra kelas. Manifest
+ini tidak menyediakan pemetaan crop ke citra UAV sumber.
 
 ### Sumber Dataset
 
@@ -64,7 +68,7 @@ InterDuPa-UAV:
 
 https://zenodo.org/records/15664908
 
-> Dataset mentah dan file metadata lokal tidak disimpan di repository GitHub karena ukuran file dan keterbatasan struktur metadata. Repository berisi source code, notebook, konfigurasi eksperimen, hasil eksperimen, serta dokumentasi cara memperoleh dataset.
+> Dataset mentah dan `Dataset-metadata.xlsx` tidak disimpan di repository GitHub karena ukuran file dan keterbatasan struktur metadata. Repository tetap menyimpan `datasets/metadata.csv` sebagai manifest path dan label, serta dokumentasi cara memperoleh dataset.
 
 ---
 
@@ -420,6 +424,7 @@ P2/
 │   ├── 25 meter/
 │   ├── 30 meter/
 │   ├── Dataset-metadata.xlsx
+│   ├── metadata.csv
 │   ├── demo.py
 │   ├── Durian (durio zibethinus)/
 │   ├── Papaya (carica papaya)/
@@ -429,7 +434,7 @@ P2/
 │   ├── IJCCS_FruitAndVeg_resnet18.ipynb
 │   └── RET503_Pertemuan3_Transfer_Learning.pdf
 │
-├── notebook.ipynb
+├── notebook-p2-vision-dan-deep.ipynb
 └── README.md
 ```
 
@@ -437,7 +442,7 @@ Keterangan:
 
 - `datasets/` — dataset dan metadata lokal.
 - `materi_p2/` — materi pembelajaran dan contoh implementasi dari pertemuan P2.
-- `notebook.ipynb` — notebook utama eksperimen.
+- `notebook-p2-vision-dan-deep.ipynb` — notebook utama eksperimen yang dijalankan pada Kaggle GPU dan menyimpan output eksperimen.
 - `README.md` — dokumentasi project.
 
 ---
@@ -632,4 +637,4 @@ Perubahan kode hanya dilakukan apabila diperlukan untuk:
 5. membandingkan tiga strategi training;
 6. dan menghasilkan evaluasi yang dibutuhkan oleh project.
 
-Dengan pendekatan ini, `IJCCS_FruitAndVeg_resnet18.ipynb` berfungsi sebagai **baseline implementasi**, sedangkan `notebook.ipynb` merupakan **adaptasi dan pengembangan baseline tersebut untuk dataset tanaman dari citra UAV**.
+Dengan pendekatan ini, `IJCCS_FruitAndVeg_resnet18.ipynb` berfungsi sebagai **baseline implementasi**, sedangkan `notebook-p2-vision-dan-deep.ipynb` merupakan **adaptasi dan pengembangan baseline tersebut untuk dataset tanaman dari citra UAV**.

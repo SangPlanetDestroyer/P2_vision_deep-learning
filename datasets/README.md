@@ -15,7 +15,22 @@ dan dikelompokkan ke dalam dua kelas:
 | Papaya (`Carica papaya`) | 2.872 |
 | **Total** | **6.199** |
 
-Metadata deskriptif dataset tersedia sebagai `Dataset-metadata.xlsx`.
+Metadata sumber yang disediakan dataset tersedia sebagai `Dataset-metadata.xlsx`.
+File tersebut bersifat deskriptif dan tidak menyediakan pemetaan setiap crop
+ke citra UAV sumber.
+
+Repository juga menyediakan [`metadata.csv`](metadata.csv). File ini adalah
+manifest yang dibuat dari folder kelas lokal, dengan kolom:
+
+```text
+relative_path,label,class_name
+```
+
+Manifest tersebut berisi 6.199 citra: 3.327 Durian dan 2.872 Papaya. File ini
+berguna untuk memeriksa daftar file dan label, tetapi bukan metadata sumber UAV
+dan tidak dapat digunakan untuk membuat `group_id` tanpa informasi tambahan.
+Notebook saat ini tetap membaca citra dari folder kelas; `metadata.csv` berfungsi
+sebagai manifest pemeriksaan dan tidak menjadi input wajib pipeline training.
 
 Jumlah citra pada folder lokal yang digunakan notebook adalah 3.327 Durian dan
 2.872 Papaya. Teks abstrak di file metadata mencantumkan angka tersebut dalam
@@ -26,9 +41,9 @@ dataset sebelum pelaporan final.
 ## Mengapa dataset tidak disimpan di GitHub?
 
 File citra berukuran besar sehingga tidak praktis dan tidak sesuai untuk
-disimpan langsung di repository GitHub. Oleh karena itu, file citra mentah
-tidak diikutkan dalam repository dan direktori dataset diatur agar diabaikan
-oleh Git. README ini tetap disimpan sebagai dokumentasi sumber dataset.
+disimpan langsung di repository GitHub. `Dataset-metadata.xlsx` juga tidak
+diikutkan karena merupakan file sumber lokal. File `metadata.csv` tetap
+disimpan karena ukurannya kecil dan dibutuhkan sebagai manifest dataset.
 
 ## Cara menyiapkan dataset
 
@@ -39,6 +54,7 @@ oleh Git. README ini tetap disimpan sebagai dokumentasi sumber dataset.
 ```text
 datasets/
 ├── Dataset-metadata.xlsx
+├── metadata.csv
 ├── Durian (durio zibethinus)/
 │   ├── 0.jpg
 │   └── ...
@@ -51,6 +67,8 @@ Dataset lokal juga dapat memiliki folder citra UAV sumber seperti `25 meter/`
 dan `30 meter/`. Folder tersebut tidak dibaca sebagai kelas oleh notebook
 klasifikasi saat ini.
 
-Notebook utama akan menggunakan `datasets/` secara otomatis ketika dijalankan
-di luar environment Kaggle. Pada Kaggle, lokasi dataset diatur melalui
-`DATASET_ROOT`.
+Notebook utama `notebook-p2-vision-dan-deep.ipynb` merupakan notebook Kaggle
+yang sudah menyimpan output eksperimen. Notebook akan menggunakan dataset
+Kaggle ketika path `/kaggle/input/...` tersedia, dan akan menggunakan
+`datasets/` secara otomatis ketika dijalankan di luar Kaggle. Pada Kaggle,
+lokasi dataset diatur melalui `DATASET_ROOT`.

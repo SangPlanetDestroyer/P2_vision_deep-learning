@@ -12,11 +12,11 @@ Dataset yang digunakan adalah [InterDuPa-UAV](https://zenodo.org/records/1566490
 | Papaya | 2.872 |
 | **Total** | **6.199** |
 
-Dataset mentah dan `Dataset-metadata.xlsx` tidak disimpan di repository karena ukuran file dan keterbatasan struktur metadata. Cara menyiapkannya dijelaskan di [`datasets/README.md`](datasets/README.md). Metadata yang tersedia bersifat deskriptif dan belum memiliki pemetaan setiap crop ke citra UAV sumber.
+Dataset mentah dan `Dataset-metadata.xlsx` tidak disimpan di repository karena ukuran file dan keterbatasan struktur metadata. Repository menyertakan [`datasets/metadata.csv`](datasets/metadata.csv), yaitu manifest 6.199 citra dan label yang dibuat dari folder kelas. Manifest ini bukan pengganti metadata sumber UAV dan belum memiliki `group_id`. Cara memperoleh dataset dan menjalankan notebook dijelaskan di [`datasets/README.md`](datasets/README.md).
 
 ## Metode
 
-Notebook [`notebook.ipynb`](notebook.ipynb) menggunakan input 224×224 piksel, normalisasi ImageNet, augmentasi pada data training, seed 42, batch size 32, dan 10 epoch. Sebanyak 20 citra dari setiap kelas ditahan sebagai blind test sebelum train-validation split. Ketiga mode menggunakan sisa data, split, dan preprocessing yang sama:
+Notebook [`notebook-p2-vision-dan-deep.ipynb`](notebook-p2-vision-dan-deep.ipynb) adalah notebook eksperimen yang dijalankan pada Kaggle GPU menggunakan dataset Kaggle. Notebook yang sama dapat dijalankan di luar Kaggle setelah dataset disiapkan di `datasets/`. Notebook menggunakan input 224×224 piksel, normalisasi ImageNet, augmentasi pada data training, seed 42, batch size 32, dan 10 epoch. Sebanyak 20 citra dari setiap kelas ditahan sebagai blind test sebelum train-validation split. Ketiga mode menggunakan sisa data, split, dan preprocessing yang sama:
 
 1. **Feature Extraction** — backbone ResNet18 pretrained dibekukan; hanya classifier yang dilatih.
 2. **Partial Fine-Tuning** — layer akhir dan classifier dilatih, sedangkan layer awal dibekukan.
@@ -39,6 +39,7 @@ Hasil lengkap tersedia di:
 - [`results/confusion_matrix.png`](results/confusion_matrix.png) — confusion matrix model terpilih.
 - [`results/config.json`](results/config.json) — konfigurasi eksperimen.
 - [`results/best_resnet18.pt`](results/best_resnet18.pt) — bobot model Partial Fine-Tuning terpilih.
+- [`datasets/metadata.csv`](datasets/metadata.csv) — manifest path, label numerik, dan nama kelas.
 
 ## Analisis dan keterbatasan
 
